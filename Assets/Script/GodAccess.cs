@@ -11,9 +11,7 @@ public class GodAccess : MonoBehaviour
     {
         
         GameObject player = GameObject.Find("Player");
-        Debug.Log("P: " + player.ToString());
         movement = player.GetComponent<CharacterMovement>();
-        Debug.Log("M: " + movement.ToString());
     }
 
     // Update is called once per frame
