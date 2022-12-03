@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
         get => pressedKeys.GetDepth();
         set => pressedKeys.SetDepth(value);
     }
+    public GameOverScreen gameOverScreen;
     CommandQueue pressedKeys = new CommandQueue();
 
     public float movementSpeed = 1;
@@ -158,7 +159,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "FallTrigger"){
-            UnityEditor.EditorApplication.isPlaying = false;
+            gameOverScreen.SetUp();
         }
     }
 }
