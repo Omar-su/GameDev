@@ -8,6 +8,8 @@ public class GodAccess : MonoBehaviour
     public MeshRenderer enterText;
     EvilMachine[] allMachines;
     EvilMachine touchedMachine = null;
+
+    const float HavocTime = 5;
     EvilMachine TouchedMachine {
         get => touchedMachine;
         set {
@@ -20,7 +22,6 @@ public class GodAccess : MonoBehaviour
     public float movementSpeed;
     bool canMove = true;
 
-    CharacterMovement movement;
 
     const float machineEnterDistance = 5;
 
@@ -31,9 +32,6 @@ public class GodAccess : MonoBehaviour
 
         enterText.enabled = false;
         allMachines = GameObject.FindObjectsOfType<EvilMachine>();
-
-        GameObject player = GameObject.Find("Player");
-        movement = player.GetComponent<CharacterMovement>();
     }
 
     // Update is called once per frame
@@ -57,6 +55,7 @@ public class GodAccess : MonoBehaviour
                 transform.position = TouchedMachine.gameObject.transform.position;
                 touchedMachine.Pump();
                 canMove = false;
+                enterText.enabled = false;
                 Debug.Log("EvilMachine: Attached to machine");
             }
             //Pump
@@ -66,10 +65,32 @@ public class GodAccess : MonoBehaviour
         }
         
         //Leave
-        if (!canMove && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))) {
+        if (!canMove && (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))) {
             canMove = true;
+            CheckForMachines();
             Debug.Log("EvilMachine: Detached to machine");
         }
+
+        //Activate powers
+        if (Input.GetKeyDown(KeyCode.UpArrow)){
+            foreach (EvilMachine em in allMachines) {
+                em.CauseHavoc();
+            }
+            //TODO stand still animation
+            canMove = false;
+            StartCoroutine("StopHavocInTime");
+        }
+    }
+
+    IEnumerator StopHavocInTime() {
+        Debug.Log("Stop");
+        yield return new WaitForSeconds(HavocTime);
+        foreach (EvilMachine em in allMachines) {
+            em.CauseHavoc();
+        }
+        Debug.Log("Hammer time");
+        //TODO stand still animation
+        canMove = true;
     }
     
     private void CheckForMachines() {
