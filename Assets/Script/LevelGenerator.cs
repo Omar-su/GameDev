@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerator: MonoBehaviour {
-    private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 200f;
+    private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 100f;
     [SerializeField] private Transform levelPart_Start;
     [SerializeField] private List<Transform> levelPartList;
     private GameObject player;
@@ -14,7 +14,7 @@ public class LevelGenerator: MonoBehaviour {
     }
     private void Awake() {
         lastEndPosition = levelPart_Start.Find("LevelEnd").position;
-        int startingSpawnLevelParts = 5;
+        int startingSpawnLevelParts = 3;
         for (int i = 0; i < startingSpawnLevelParts; i++) {
             SpawnLevelPart();
         }
@@ -22,7 +22,9 @@ public class LevelGenerator: MonoBehaviour {
     private void Update() {
         if (Vector3.Distance(new Vector3(player.transform.position.x, player.transform.position.y), lastEndPosition) < PLAYER_DISTANCE_SPAWN_LEVEL_PART) {
             // Spawn another level part
+            Debug.Log("new level");
             SpawnLevelPart();
+            Debug.Log("new level2");
         }
     }
 

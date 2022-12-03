@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class SelfDestruct : MonoBehaviour
 {   
-    private float secondsToDestroy = 20f;   
+    private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 300f;
+    private GameObject player;
+    private Vector3 lastEndPosition;
+
+       
     void Start()
     {
-        StartCoroutine(DestroySelf());
+        player = GameObject.FindGameObjectWithTag("Player");
+        lastEndPosition = transform.Find("LevelEnd").position;
     }
 
-    IEnumerator DestroySelf() 
-    {
-        yield return new WaitForSeconds(secondsToDestroy);
-        Destroy(gameObject);
+    private void Update() {
+        
+        if(Vector3.Distance(new Vector3(player.transform.position.x, player.transform.position.y), lastEndPosition) > PLAYER_DISTANCE_SPAWN_LEVEL_PART){
+            Destroy(gameObject);
+        }
+        
     }
 }
