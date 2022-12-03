@@ -1,7 +1,15 @@
+using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    //God influnce
+    public int delay {
+        get => pressedKeys.GetDepth();
+        set => pressedKeys.SetDepth(value);
+    }
+    CommandQueue pressedKeys = new CommandQueue();
 
     public float movementSpeed = 1;
     public float jumpForce = 1;
@@ -27,13 +35,13 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-
+        pressedKeys.Update();
         
-        if(isOnGround() && Input.GetKeyDown(KeyCode.Space)){
+        if(isOnGround() && pressedKeys.GetKeyDown(KeyCode.Space)){
             rigidbody2D.velocity = Vector2.up * jumpForce;
         }
 
-        else if(doubleJump < 2 && Input.GetKeyDown(KeyCode.Space)){
+        else if(doubleJump < 2 && pressedKeys.GetKeyDown(KeyCode.Space)){
             doubleJump ++;
             rigidbody2D.velocity = Vector2.up * jumpForce;
 
@@ -60,17 +68,17 @@ public class CharacterMovement : MonoBehaviour
 
     private void handleMovement(){
    
-        if(Input.GetKey(KeyCode.Y)){
+        if(pressedKeys.GetKey(KeyCode.Y)){
             
         }
-        if(Input.GetKey(KeyCode.A)){
+        if(pressedKeys.GetKey(KeyCode.A)){
             rigidbody2D.velocity = new Vector2(-movementSpeed, rigidbody2D.velocity.y);
             //animator.SetFloat("Speed", 3);
             if(facingRight){
                 //flip();
             }
         }else{
-            if(Input.GetKey(KeyCode.D)){
+            if(pressedKeys.GetKey(KeyCode.D)){
                 rigidbody2D.velocity = new Vector2(+movementSpeed, rigidbody2D.velocity.y);
                 //animator.SetFloat("Speed", 3);
                 if(!facingRight){
@@ -90,5 +98,61 @@ public class CharacterMovement : MonoBehaviour
     //     transform.Rotate(0f,180f,0f);
     // }
 
+    class CommandQueue{
+        int depth;
+        Queue<KeyCode[][]> commands;
 
+        public CommandQueue(){
+            depth = 1;
+            commands = new Queue<KeyCode[][]>();
+            commands.Enqueue(new KeyCode[][]{new KeyCode[0],new KeyCode[0],new KeyCode[0]});
+        }
+
+        static KeyCode[] keys = (KeyCode[])System.Enum.GetValues(typeof(KeyCode));
+        // Update is called once per frame
+        public void Update()
+        {   
+            List<KeyCode> pressedKeys = new List<KeyCode>();
+            List<KeyCode> tappedKeys = new List<KeyCode>();
+            List<KeyCode> releasedKeys = new List<KeyCode>();
+            foreach(KeyCode kCode in keys){
+                if (Input.GetKey(kCode))
+                    pressedKeys.Add(kCode);
+                if (Input.GetKeyDown(kCode))
+                    tappedKeys.Add(kCode);
+                if (Input.GetKeyUp(kCode))
+                    releasedKeys.Add(kCode);
+            }
+            commands.Enqueue(
+                new KeyCode[][]{pressedKeys.ToArray(),
+                tappedKeys.ToArray(),
+                releasedKeys.ToArray()});
+            RemoveExcess();
+        }
+
+        private void RemoveExcess(){
+            while (commands.Count > depth) commands.Dequeue();
+        }
+        private void FillToCapacity(){
+            while (commands.Count < depth) commands.Enqueue(commands.Peek());
+        }
+
+        public bool GetKey(KeyCode k){
+            return commands.Peek()[0].Contains(k);
+        }
+        public bool GetKeyDown(KeyCode k){
+            return commands.Peek()[1].Contains(k);
+        }
+        public bool GetKeyUp(KeyCode k){
+            return commands.Peek()[2].Contains(k);
+        }
+        public int GetDepth() {
+            return depth;
+        }
+        public void SetDepth(int depth){
+            this.depth = depth;
+            FillToCapacity();
+            RemoveExcess();
+        }
+    }
 }
