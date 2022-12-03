@@ -155,4 +155,10 @@ public class CharacterMovement : MonoBehaviour
             RemoveExcess();
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.tag == "FallTrigger"){
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
+    }
 }

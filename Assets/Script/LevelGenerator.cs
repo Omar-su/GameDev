@@ -22,15 +22,13 @@ public class LevelGenerator: MonoBehaviour {
     private void Update() {
         if (Vector3.Distance(new Vector3(player.transform.position.x, player.transform.position.y), lastEndPosition) < PLAYER_DISTANCE_SPAWN_LEVEL_PART) {
             // Spawn another level part
-            Debug.Log("new level");
             SpawnLevelPart();
-            Debug.Log("new level2");
         }
     }
 
     private void SpawnLevelPart() {
         Transform chosenLevelPart = levelPartList[Random.Range(0, levelPartList.Count)];
-        Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition + chosenLevelPart.position - new Vector3(17,0,0));
+        Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition + chosenLevelPart.position - new Vector3(18,0,0));
         lastEndPosition = lastLevelPartTransform.Find("LevelEnd").position;
     }
 
