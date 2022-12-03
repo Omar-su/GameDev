@@ -57,7 +57,7 @@ public class GodAccess : MonoBehaviour
                 transform.position = TouchedMachine.gameObject.transform.position;
                 touchedMachine.Pump();
                 canMove = false;
-                Debug.Log("Attached to machine");
+                Debug.Log("EvilMachine: Attached to machine");
             }
             //Pump
             else if (Input.GetKeyDown(KeyCode.DownArrow)) {
@@ -68,7 +68,7 @@ public class GodAccess : MonoBehaviour
         //Leave
         if (!canMove && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))) {
             canMove = true;
-            Debug.Log("Detached to machine");
+            Debug.Log("EvilMachine: Detached to machine");
         }
     }
     
