@@ -13,7 +13,7 @@ public class LevelGenerator: MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
     }
     private void Awake() {
-        lastEndPosition = levelPart_Start. Find("LevelEnd").position;
+        lastEndPosition = levelPart_Start.Find("LevelEnd").position;
         int startingSpawnLevelParts = 5;
         for (int i = 0; i < startingSpawnLevelParts; i++) {
             SpawnLevelPart();
@@ -28,7 +28,7 @@ public class LevelGenerator: MonoBehaviour {
 
     private void SpawnLevelPart() {
         Transform chosenLevelPart = levelPartList[Random.Range(0, levelPartList.Count)];
-        Transform lastLevelPartTransform = SpawnLevelPart (chosenLevelPart, lastEndPosition);
+        Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition + chosenLevelPart.position - new Vector3(17,0,0));
         lastEndPosition = lastLevelPartTransform.Find("LevelEnd").position;
     }
 
