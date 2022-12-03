@@ -150,6 +150,8 @@ public class CharacterMovement : MonoBehaviour
             return depth;
         }
         public void SetDepth(int depth){
+            depth = Mathf.Max(1, depth);
+            Debug.Log("Set 2 " + depth);
             this.depth = depth;
             FillToCapacity();
             RemoveExcess();

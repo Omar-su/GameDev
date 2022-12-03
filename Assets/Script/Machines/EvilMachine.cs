@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class EvilMachine : MonoBehaviour
 {
     public GameObject powertext;
-    protected int powerlevel = 0;
+    public int powerlevel = 0;
     public int maxPower;
     // Start is called before the first frame update
     void Start()
@@ -30,6 +30,7 @@ public abstract class EvilMachine : MonoBehaviour
     }
 
     protected abstract string PowerInfo();
-    protected abstract void CauseHavoc();
+    public abstract void CauseHavoc();
+    public abstract void StopHavoc();
 
 }

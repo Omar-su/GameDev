@@ -5,8 +5,19 @@ using UnityEngine;
 public class DelayMachine : EvilMachine
 {
     public int maxDelay = 50;
-    protected override void CauseHavoc() {
-        throw new System.NotImplementedException();
+    CharacterMovement movement;
+
+    void Start() {
+        movement = GameObject.Find("Player").GetComponent<CharacterMovement>();
+    }
+
+    public override void CauseHavoc() {
+        movement.delay = (int)((float)powerlevel / maxDelay * maxDelay);
+        powerlevel = 0;
+    }
+
+    public override void StopHavoc() {
+        movement.delay = 1;
     }
 
     protected override string PowerInfo() {
