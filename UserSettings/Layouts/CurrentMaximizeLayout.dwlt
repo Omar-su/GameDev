@@ -224,9 +224,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 46920000
-      m_LastClickedID: 37446
-      m_ExpandedIDs: a27cfeff94c3feff86c5feff12eafeff60eafeffc4fcfeffbc06ffff3c34ffff9667ffffb275ffff1c7dffff46afffff36c0ffff58c1ffff1ec8ffff82c9fffffad7ffff9ceaffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: dac5fdffd2d8fdff08e9fdff2029feffa27cfeff94c3feff86c5feff12eafeff60eafeffc4fcfeffbc06ffff3c34ffff9667ffffb275ffff1c7dffff46afffff36c0ffff58c1ffff1ec8ffff82c9fffffad7ffff9ceaffffb6f000002ef10000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -399,10 +399,10 @@ MonoBehaviour:
       containerId: overlay-container--right
       floating: 0
       collapsed: 0
-      displayed: 1
-      snapOffset: {x: 0, y: 0}
+      displayed: 0
+      snapOffset: {x: -266, y: -166}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 0
+      snapCorner: 3
       id: Scene View/Camera
       index: 1
       layout: 4
@@ -559,9 +559,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 6.9628396, y: -5.9229608, z: -0.10481451}
+    m_Target: {x: -0.17015655, y: -2.4241655, z: -2.3084211}
     speed: 2
-    m_Value: {x: 6.9628396, y: -5.9229608, z: -0.10481451}
+    m_Value: {x: -0.17015655, y: -2.4241655, z: -2.3084211}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -612,9 +612,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 15.34562
+    m_Target: 16.09559
     speed: 2
-    m_Value: 15.34562
+    m_Value: 16.09559
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -694,9 +694,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 341
+    x: 290
     y: 73
-    width: 1188
+    width: 1240
     height: 717
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -770,21 +770,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Script
+    - Assets/Prefap
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Script
+  - Assets/Prefap
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\omars\New Unity Project\Romaninio\BlandUs
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a4920000
-    m_LastClickedID: 37540
+    m_SelectedIDs: 88a70000
+    m_LastClickedID: 42888
     m_ExpandedIDs: 000000007892000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -838,9 +838,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 46920000
-    m_LastClickedInstanceID: 37446
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300008eb300009eb30000a2b30000b4b3000092b3000096b300005ab50000a6b300008cbc0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

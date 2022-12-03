@@ -28,7 +28,7 @@ public class LevelGenerator: MonoBehaviour {
 
     private void SpawnLevelPart() {
         Transform chosenLevelPart = levelPartList[Random.Range(0, levelPartList.Count)];
-        Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition + chosenLevelPart.position - new Vector3(18,0,0));
+        Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition + chosenLevelPart.position - new Vector3(19,0,0));
         lastEndPosition = lastLevelPartTransform.Find("LevelEnd").position;
     }
 
