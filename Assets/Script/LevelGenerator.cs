@@ -35,7 +35,7 @@ public class LevelGenerator: MonoBehaviour {
     }
 
     private void SpawnLevelPart() {
-        if(playerScore.getScore() < 15) {
+        if(playerScore.getScore() < 180) {
             Transform chosenLevelPart = levelPartList[Random.Range(0, levelPartList.Count)];
             Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition + chosenLevelPart.position - new Vector3(19,0,0));
             Vector3 v = lastEndPosition + chosenLevelPart.position;
@@ -46,7 +46,7 @@ public class LevelGenerator: MonoBehaviour {
             }
 
             lastEndPosition = lastLevelPartTransform.Find("LevelEnd").position;
-        }else if(playerScore.getScore() >= 15 && !finalLevelCreated){
+        }else if(playerScore.getScore() >= 180 && !finalLevelCreated){
             Transform chosenLevelPart = finalLevel;
             Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition  + new Vector3(-8,0,0));
             finalLevelCreated = true;

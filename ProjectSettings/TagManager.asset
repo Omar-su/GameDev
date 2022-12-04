@@ -7,6 +7,7 @@ TagManager:
   - FallTrigger
   - Exam
   - Lab
+  - End
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,7 @@ public class CharacterMovement : MonoBehaviour
     }
     bool canMove = true;
     public Score score;
+    public GAMEOVER gAMEOVER;
     public GameOverScreen gameOverScreen;
     CommandQueue pressedKeys = new CommandQueue();
 
@@ -38,9 +39,15 @@ public class CharacterMovement : MonoBehaviour
         
     }
 
+    public void playerEnd(){
+        gAMEOVER.SetUp();
+        this.enabled = false;
+    }
+
     // Update is called once per frame
     private void Update()
     {
+        CheckScore();
         pressedKeys.Update();
         
         if(isOnGround() && pressedKeys.GetKeyDown(KeyCode.Space) && canMove){
@@ -61,6 +68,12 @@ public class CharacterMovement : MonoBehaviour
             //animator.SetBool("isJumping", false);
         }
         handleMovement();
+    }
+
+    private void CheckScore(){
+        if(score.getScore() >= 60) {
+            
+        }
     }
 
 

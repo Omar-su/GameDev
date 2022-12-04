@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GodAccess : MonoBehaviour
 {
-    public MeshRenderer enterText;
+    //public MeshRenderer enterText;
     EvilMachine[] allMachines;
     EvilMachine touchedMachine = null;
 
@@ -13,8 +13,8 @@ public class GodAccess : MonoBehaviour
     EvilMachine TouchedMachine {
         get => touchedMachine;
         set {
-            if (value != null) enterText.enabled = true;
-            else enterText.enabled = false;
+            // if (value != null) enterText.enabled = true;
+            // else enterText.enabled = false;
             touchedMachine = value;
         }
     }
@@ -34,7 +34,7 @@ public class GodAccess : MonoBehaviour
 
         animator = GetComponent<Animator>();
         spr = GetComponent<SpriteRenderer>();
-        enterText.enabled = false;
+        // enterText.enabled = false;
         allMachines = GameObject.FindObjectsOfType<EvilMachine>();
     }
 
@@ -74,7 +74,7 @@ public class GodAccess : MonoBehaviour
 
                 touchedMachine.Pump();
                 canMove = false;
-                enterText.enabled = false;
+                // enterText.enabled = false;
                 Debug.Log("EvilMachine: Attached to machine");
             }
             //Pump
