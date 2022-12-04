@@ -22,6 +22,8 @@ public class GodAccess : MonoBehaviour
     public float movementSpeed;
     bool canMove = true;
 
+    private Animator animator;
+    private SpriteRenderer spr;
 
     const float machineEnterDistance = 5;
 
@@ -30,6 +32,8 @@ public class GodAccess : MonoBehaviour
     {
         movementSpeed /= 60;
 
+        animator = GetComponent<Animator>();
+        spr = GetComponent<SpriteRenderer>();
         enterText.enabled = false;
         allMachines = GameObject.FindObjectsOfType<EvilMachine>();
     }
@@ -40,9 +44,18 @@ public class GodAccess : MonoBehaviour
         var height = 2 * Camera.main.orthographicSize;
         var width = height * Camera.main.aspect;
         //Movement
+        animator.SetBool("Walking", false);
         if (canMove) {
-            if (Input.GetKey(KeyCode.LeftArrow)) transform.position += Vector3.left * movementSpeed;
-            if (Input.GetKey(KeyCode.RightArrow)) transform.position -= Vector3.left * movementSpeed;
+            if (Input.GetKey(KeyCode.LeftArrow)) {
+                transform.position += Vector3.left * movementSpeed;
+                animator.SetBool("Walking", true);
+                spr.flipX = true;
+            }
+            if (Input.GetKey(KeyCode.RightArrow)) {
+                transform.position -= Vector3.left * movementSpeed;
+                animator.SetBool("Walking", true);
+                spr.flipX = false;
+            }
             float x = transform.localPosition.x, maxX = Camera.main.orthographicSize * Screen.width / Screen.height;
             if (Math.Abs(x) > Math.Abs(maxX)) transform.position = new Vector3(Math.Sign(x) * maxX, transform.position.y, transform.position.z);
         }

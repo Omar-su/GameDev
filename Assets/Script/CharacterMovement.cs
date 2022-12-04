@@ -16,6 +16,7 @@ public class CharacterMovement : MonoBehaviour
     public float jumpForce = 1;
 
     private Animator animator;
+    private SpriteRenderer spr;
 
     [SerializeField] private LayerMask platformsLayerMask;
     private Rigidbody2D rigidbody2D;
@@ -27,6 +28,7 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        spr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         boxCollider2D = transform.GetComponent<BoxCollider2D>();
@@ -75,15 +77,19 @@ public class CharacterMovement : MonoBehaviour
         }
         if(pressedKeys.GetKey(KeyCode.A)){
             rigidbody2D.velocity = new Vector2(-movementSpeed, rigidbody2D.velocity.y);
+            spr.flipX = true;
+            animator.SetBool("Walking", true);
             //animator.SetFloat("Speed", 3);
-            if(facingRight){
+            if (facingRight){
                 //flip();
             }
         }else{
             if(pressedKeys.GetKey(KeyCode.D)){
                 rigidbody2D.velocity = new Vector2(+movementSpeed, rigidbody2D.velocity.y);
+                spr.flipX = false;
+                animator.SetBool("Walking", true);
                 //animator.SetFloat("Speed", 3);
-                if(!facingRight){
+                if (!facingRight){
                     //flip();
                 }
             }else{
