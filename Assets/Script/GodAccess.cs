@@ -63,7 +63,7 @@ public class GodAccess : MonoBehaviour
         //Machine Entering/Leaving
         if (canMove) CheckForMachines();
         //Enter
-        if (touchedMachine != null) {
+        if (touchedMachine != null && animator.GetBool("Working") == false) {
             if (canMove && Input.GetKeyDown(KeyCode.DownArrow)) {
                 transform.position = TouchedMachine.gameObject.transform.position;
                 animator.SetBool(touchedMachine.animationName, true);
@@ -81,7 +81,7 @@ public class GodAccess : MonoBehaviour
         }
         
         //Leave
-        if (!canMove && (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))) {
+        if (!canMove && animator.GetBool("Working") == false && (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))) {
             canMove = true;
             animator.SetBool(touchedMachine.animationName, false);
             CheckForMachines();
@@ -95,6 +95,7 @@ public class GodAccess : MonoBehaviour
             }
             //TODO stand still animation
             canMove = false;
+            animator.SetBool("Working", true);
             StartCoroutine("StopHavocInTime");
         }
     }
@@ -106,7 +107,7 @@ public class GodAccess : MonoBehaviour
             em.StopHavoc();
         }
         Debug.Log("Hammer time");
-        //TODO stand still animation
+        animator.SetBool("Working", false);
         canMove = true;
     }
     
