@@ -66,7 +66,7 @@ public class GodAccess : MonoBehaviour
         if (touchedMachine != null) {
             if (canMove && Input.GetKeyDown(KeyCode.DownArrow)) {
                 transform.position = TouchedMachine.gameObject.transform.position;
-                animator.SetBool("Bike", true);
+                animator.SetBool(touchedMachine.animationName, true);
                 spr.flipX = false;
 
                 touchedMachine.Pump();
