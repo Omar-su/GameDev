@@ -13,7 +13,7 @@ public class PowerTextMovement : MonoBehaviour
     void Start()
     {
         _TTL = TTL;
-        start = transform.localPosition;
+        start = transform.localPosition + Vector3.up;
         target = start + Vector3.up;
         scaleStart = transform.localScale * transform.lossyScale.x;
         transform.localScale = scaleStart;
