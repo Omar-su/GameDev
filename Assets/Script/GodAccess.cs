@@ -66,13 +66,16 @@ public class GodAccess : MonoBehaviour
         if (touchedMachine != null) {
             if (canMove && Input.GetKeyDown(KeyCode.DownArrow)) {
                 transform.position = TouchedMachine.gameObject.transform.position;
+                animator.SetBool("Bike", true);
+                spr.flipX = false;
+
                 touchedMachine.Pump();
                 canMove = false;
                 enterText.enabled = false;
                 Debug.Log("EvilMachine: Attached to machine");
             }
             //Pump
-            else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            else if (canMove == false && !Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow)) {
                 touchedMachine.Pump();
             }
         }
@@ -80,6 +83,7 @@ public class GodAccess : MonoBehaviour
         //Leave
         if (!canMove && (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))) {
             canMove = true;
+            animator.SetBool(touchedMachine.animationName, false);
             CheckForMachines();
             Debug.Log("EvilMachine: Detached to machine");
         }

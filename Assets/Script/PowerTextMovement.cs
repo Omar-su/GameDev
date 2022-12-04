@@ -13,11 +13,12 @@ public class PowerTextMovement : MonoBehaviour
     void Start()
     {
         _TTL = TTL;
-        start = transform.localPosition + Vector3.up;
+        start = transform.localPosition + Vector3.up + Vector3.up;
         target = start + Vector3.up;
         scaleStart = transform.localScale * transform.lossyScale.x;
         transform.localScale = scaleStart;
         scaleEnd = scaleStart + new Vector3(scaleIncrease, scaleIncrease, scaleIncrease);
+        Update();
     }
 
     // Update is called once per frame

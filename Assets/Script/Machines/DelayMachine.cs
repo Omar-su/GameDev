@@ -7,7 +7,8 @@ public class DelayMachine : EvilMachine
     public int maxDelay = 50;
     CharacterMovement movement;
 
-    void Start() {
+    private void Start() {
+        base.Start();
         movement = GameObject.Find("Player").GetComponent<CharacterMovement>();
     }
 
@@ -22,6 +23,6 @@ public class DelayMachine : EvilMachine
 
     protected override string PowerInfo() {
         if (powerlevel == maxPower) return "Maximal Nedsegning\nUppnådd!!!";
-        else return "Nedsegning laddad:\n" + (int)((float)powerlevel / maxPower * maxDelay);
+        else return "Nedsegning laddad:\n" + (Mathf.Round((float)powerlevel / maxPower * 100)) + "%";
     }
 }

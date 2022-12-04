@@ -6,12 +6,13 @@ public abstract class EvilMachine : MonoBehaviour
 {
     public GameObject powertext;
     private GameObject oldIncrease = null;
+    public string animationName;
     public int powerlevel = 0;
     public int maxPower;
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
-        
+        maxPower *= 60;
     }
 
     // Update is called once per frame
