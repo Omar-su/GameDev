@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class EvilMachine : MonoBehaviour
 {
     public GameObject powertext;
+    private GameObject oldIncrease = null;
     public int powerlevel = 0;
     public int maxPower;
     // Start is called before the first frame update
@@ -26,7 +27,9 @@ public abstract class EvilMachine : MonoBehaviour
     }
 
     void ShowPower() {
-        Instantiate(powertext, transform).GetComponent<TextMesh>().text = PowerInfo();
+        if (oldIncrease != null) Destroy(oldIncrease);
+        oldIncrease = Instantiate(powertext, transform);
+        oldIncrease.GetComponent<TextMesh>().text = PowerInfo();
     }
 
     protected abstract string PowerInfo();
