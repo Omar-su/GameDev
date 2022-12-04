@@ -687,6 +687,7 @@ MonoBehaviour:
   - {fileID: 3072428538455891713, guid: 3c79e9fdcceb1bf4dbe4e31ae6690759, type: 3}
   - {fileID: 1736353545594752811, guid: 4e1d4c2c354219d4f95b5fea399823df, type: 3}
   lab: {fileID: 9177170408079716607, guid: 32c770ed5d97177469e922d1e5532412, type: 3}
+  exam: {fileID: 3214345255637859728, guid: d829f1cfd6b8db6479c07854f6a1b93c, type: 3}
 --- !u!4 &396009082
 Transform:
   m_ObjectHideFlags: 0
@@ -1260,7 +1261,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1677053349
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.8590659, b: 0.41037738, a: 1}

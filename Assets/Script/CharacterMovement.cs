@@ -175,24 +175,28 @@ public class CharacterMovement : MonoBehaviour
             ObjectEntered = other;
             HavocTime = 5;
             animator.SetBool("Working", true);
+            incScore =20;
             StartCoroutine("StopHavocInTime");
-            score.increaseScore(20);  
         }
         else if(other.tag == "Lab") {
             canMove = false;
             ObjectEntered = other;
             HavocTime = 3;
+            incScore = 15;
             StartCoroutine("StopHavocInTime");
-            score.increaseScore(15); 
         } 
     }
     private Collider2D ObjectEntered;
     private float HavocTime = 0;
+    private double incScore;
     IEnumerator StopHavocInTime() {
 
         yield return new WaitForSeconds(HavocTime);
         animator.SetBool("Working", false);
         canMove = true;
-        Destroy(ObjectEntered.gameObject);
+        score.increaseScore(incScore); 
+        if(ObjectEntered != null){
+            Destroy(ObjectEntered.gameObject);
+        }
     }
 }

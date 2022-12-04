@@ -6,14 +6,19 @@ public class LevelGenerator: MonoBehaviour {
     private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 100f;
     [SerializeField] private Transform levelPart_Start;
     [SerializeField] private List<Transform> levelPartList;
+    [SerializeField] private Transform finalLevel;
+    
     private GameObject player;
+    public Score playerScore;
     private Vector3 lastEndPosition;
-    private int freeLabs;
+    private int freeLabs = 0;
+    private bool finalLevelCreated = false;
 
     public GameObject lab;
-    
+    public GameObject exam;
     private void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
+
     }
     private void Awake() {
         lastEndPosition = levelPart_Start.Find("LevelEnd").position;
@@ -30,13 +35,23 @@ public class LevelGenerator: MonoBehaviour {
     }
 
     private void SpawnLevelPart() {
-        Transform chosenLevelPart = levelPartList[Random.Range(0, levelPartList.Count)];
-        Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition + chosenLevelPart.position - new Vector3(19,0,0));
-        if(Random.Range(0,1) == 0){
-            Instantiate(lab, lastEndPosition + chosenLevelPart.position, Quaternion.identity);
+        if(playerScore.getScore() < 15) {
+            Transform chosenLevelPart = levelPartList[Random.Range(0, levelPartList.Count)];
+            Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition + chosenLevelPart.position - new Vector3(19,0,0));
+            Vector3 v = lastEndPosition + chosenLevelPart.position;
+            if(Random.Range(0,2) == 0){
+                Instantiate(lab, new Vector3(Random.Range(v.x-4, v.x+3),Random.Range(v.y+2,v.y-2), 0), Quaternion.identity);
+            } else if(Random.Range(0,2) == 0){
+                Instantiate(exam, new Vector3(Random.Range(v.x-4, v.x+3),Random.Range(v.y+2,v.y-2), 0), Quaternion.identity);
+            }
+
+            lastEndPosition = lastLevelPartTransform.Find("LevelEnd").position;
+        }else if(playerScore.getScore() >= 15 && !finalLevelCreated){
+            Transform chosenLevelPart = finalLevel;
+            Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition  + new Vector3(-8,0,0));
+            finalLevelCreated = true;
         }
         
-        lastEndPosition = lastLevelPartTransform.Find("LevelEnd").position;
     }
 
     private Transform SpawnLevelPart (Transform levelPart , Vector3 spawnPosition) {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FallTrigger
   - Exam
+  - Lab
   layers:
   - Default
   - TransparentFX
