@@ -8,6 +8,9 @@ public class LevelGenerator: MonoBehaviour {
     [SerializeField] private List<Transform> levelPartList;
     private GameObject player;
     private Vector3 lastEndPosition;
+    private int freeLabs;
+
+    public GameObject lab;
     
     private void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -29,6 +32,10 @@ public class LevelGenerator: MonoBehaviour {
     private void SpawnLevelPart() {
         Transform chosenLevelPart = levelPartList[Random.Range(0, levelPartList.Count)];
         Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition + chosenLevelPart.position - new Vector3(19,0,0));
+        if(Random.Range(0,1) == 0){
+            Instantiate(lab, lastEndPosition + chosenLevelPart.position, Quaternion.identity);
+        }
+        
         lastEndPosition = lastLevelPartTransform.Find("LevelEnd").position;
     }
 

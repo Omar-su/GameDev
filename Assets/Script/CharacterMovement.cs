@@ -174,7 +174,7 @@ public class CharacterMovement : MonoBehaviour
             canMove = false;
             ObjectEntered = other;
             StartCoroutine("StopHavocInTime");
-            score.increaseScore(7.5);  
+            score.increaseScore(15);  
         }
     }
     private Collider2D ObjectEntered;
