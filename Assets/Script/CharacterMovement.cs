@@ -173,12 +173,20 @@ public class CharacterMovement : MonoBehaviour
         else if(other.tag == "Exam"){
             canMove = false;
             ObjectEntered = other;
+            HavocTime = 5;
             StartCoroutine("StopHavocInTime");
-            score.increaseScore(15);  
+            score.increaseScore(20);  
         }
+        else if(other.tag == "Lab") {
+            canMove = false;
+            ObjectEntered = other;
+            HavocTime = 3;
+            StartCoroutine("StopHavocInTime");
+            score.increaseScore(15); 
+        } 
     }
     private Collider2D ObjectEntered;
-    const float HavocTime = 5;
+    private float HavocTime = 0;
     IEnumerator StopHavocInTime() {
 
         yield return new WaitForSeconds(HavocTime);
