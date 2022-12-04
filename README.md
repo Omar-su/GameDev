@@ -17,7 +17,7 @@ Projektet körs genom exe filen på platsen `\build\BlandUs.exe`
 - Diverse grafik
 
 ## Instruktioner för att spela
-Spelet körs med två spelare där guden som är uppe använder höger och vänster pilarna för att röra sig. Guden kan ladda upp en krfat genom att trycka på upp pilen vid cykeln eller jorden och sedan aktiverar den genom att trycka igen på upp pilen. 
+Spelet körs med två spelare där guden som är uppe använder höger och vänster pilarna för att röra sig. Guden kan ladda upp en krfat genom att trycka på upp pilen vid cykeln eller jorden och sedan aktiverar den genom att trycka igen på upp pilen. Guden har två krafter: första är att snurra jorden som innebär att spelet snurrar lite och den andra är att orsakar en delay på spelaren. 
 
 Spelaren nere kan röras med A till vänster, D till höger, space för att hoppa. Du kan få poäng genom att göra labbar och tentor som finns i mappen men de tar tid så man måste köra snabbt. Man kan dubbel hoppa när man springer men man kan hoppa tre gånger när man står stilla. 
 
