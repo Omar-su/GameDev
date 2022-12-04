@@ -174,6 +174,7 @@ public class CharacterMovement : MonoBehaviour
             canMove = false;
             ObjectEntered = other;
             HavocTime = 5;
+            animator.SetBool("Working", true);
             StartCoroutine("StopHavocInTime");
             score.increaseScore(20);  
         }
@@ -190,7 +191,7 @@ public class CharacterMovement : MonoBehaviour
     IEnumerator StopHavocInTime() {
 
         yield return new WaitForSeconds(HavocTime);
-        //TODO stand still animation
+        animator.SetBool("Working", false);
         canMove = true;
         Destroy(ObjectEntered.gameObject);
     }
