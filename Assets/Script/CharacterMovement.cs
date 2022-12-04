@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
         get => pressedKeys.GetDepth();
         set => pressedKeys.SetDepth(value);
     }
+    public Score score;
     public GameOverScreen gameOverScreen;
     CommandQueue pressedKeys = new CommandQueue();
 
@@ -170,6 +171,10 @@ public class CharacterMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "FallTrigger"){
             gameOverScreen.SetUp();
+        }
+        else if(other.tag == "Exam"){
+            score.increaseScore(7.5);
+            Destroy(other.gameObject);
         }
     }
 }
