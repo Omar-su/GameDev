@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Collections;
 public class CharacterMovement : MonoBehaviour
 {
     //God influnce
@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
         get => pressedKeys.GetDepth();
         set => pressedKeys.SetDepth(value);
     }
+    bool canMove = true;
     public Score score;
     public GameOverScreen gameOverScreen;
     CommandQueue pressedKeys = new CommandQueue();
@@ -42,18 +43,16 @@ public class CharacterMovement : MonoBehaviour
     {
         pressedKeys.Update();
         
-        if(isOnGround() && pressedKeys.GetKeyDown(KeyCode.Space)){
+        if(isOnGround() && pressedKeys.GetKeyDown(KeyCode.Space) && canMove){
             rigidbody2D.velocity = Vector2.up * jumpForce;
         }
 
-        else if(doubleJump < 2 && pressedKeys.GetKeyDown(KeyCode.Space)){
+        else if(doubleJump < 2 && pressedKeys.GetKeyDown(KeyCode.Space) && canMove){
             doubleJump ++;
             rigidbody2D.velocity = Vector2.up * jumpForce;
 
-        }else if(doubleJump >=2 && isOnGround()){
+        }else if(doubleJump >=2 && isOnGround() && canMove){
             doubleJump = 0;
-
-
         }
 
         if(!isOnGround()){
@@ -72,11 +71,8 @@ public class CharacterMovement : MonoBehaviour
 
 
     private void handleMovement(){
-   
-        if(pressedKeys.GetKey(KeyCode.Y)){
-            
-        }
-        if(pressedKeys.GetKey(KeyCode.A)){
+
+        if(pressedKeys.GetKey(KeyCode.A) && canMove){
             rigidbody2D.velocity = new Vector2(-movementSpeed, rigidbody2D.velocity.y);
             spr.flipX = true;
             animator.SetBool("Walking", true);
@@ -85,7 +81,7 @@ public class CharacterMovement : MonoBehaviour
                 //flip();
             }
         }else{
-            if(pressedKeys.GetKey(KeyCode.D)){
+            if(pressedKeys.GetKey(KeyCode.D) && canMove){
                 rigidbody2D.velocity = new Vector2(+movementSpeed, rigidbody2D.velocity.y);
                 spr.flipX = false;
                 animator.SetBool("Walking", true);
@@ -100,6 +96,8 @@ public class CharacterMovement : MonoBehaviour
                 //animator.SetFloat("Speed", 0);
             }
         }
+        
+        
     }
 
 
@@ -173,8 +171,19 @@ public class CharacterMovement : MonoBehaviour
             gameOverScreen.SetUp();
         }
         else if(other.tag == "Exam"){
-            score.increaseScore(7.5);
-            Destroy(other.gameObject);
+            canMove = false;
+            ObjectEntered = other;
+            StartCoroutine("StopHavocInTime");
+            score.increaseScore(7.5);  
         }
+    }
+    private Collider2D ObjectEntered;
+    const float HavocTime = 5;
+    IEnumerator StopHavocInTime() {
+
+        yield return new WaitForSeconds(HavocTime);
+        //TODO stand still animation
+        canMove = true;
+        Destroy(ObjectEntered.gameObject);
     }
 }
