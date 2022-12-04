@@ -68,6 +68,9 @@ public class GodAccess : MonoBehaviour
                 transform.position = TouchedMachine.gameObject.transform.position;
                 animator.SetBool(touchedMachine.animationName, true);
                 spr.flipX = false;
+                if (touchedMachine.gameObject.GetComponent<Animator>() != null) {
+                    touchedMachine.gameObject.GetComponent<Animator>().SetBool("Spin", true);
+                }
 
                 touchedMachine.Pump();
                 canMove = false;
@@ -84,6 +87,9 @@ public class GodAccess : MonoBehaviour
         if (!canMove && animator.GetBool("Working") == false && (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))) {
             canMove = true;
             animator.SetBool(touchedMachine.animationName, false);
+            if (touchedMachine.gameObject.GetComponent<Animator>() != null) {
+                touchedMachine.gameObject.GetComponent<Animator>().SetBool("Spin", false);
+            }
             CheckForMachines();
             Debug.Log("EvilMachine: Detached to machine");
         }
