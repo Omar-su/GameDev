@@ -103,7 +103,7 @@ public class GodAccess : MonoBehaviour
         Debug.Log("Stop");
         yield return new WaitForSeconds(HavocTime);
         foreach (EvilMachine em in allMachines) {
-            em.CauseHavoc();
+            em.StopHavoc();
         }
         Debug.Log("Hammer time");
         //TODO stand still animation

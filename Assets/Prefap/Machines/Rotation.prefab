@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8990482227139187949}
   - component: {fileID: 1826741404114018897}
-  - component: {fileID: 5018664816712771206}
+  - component: {fileID: 5757234364897326172}
   m_Layer: 8
-  m_Name: Delay
+  m_Name: Rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -1595414999
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 400f5d695c69d8a47bbeee79b5ae51e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 11056b9bb7bf83f4487a3c095bf6e270, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5018664816712771206
+--- !u!114 &5757234364897326172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,11 +94,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7677368739460016874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ec2ce8909991bb43b770600894fa25c, type: 3}
+  m_Script: {fileID: 11500000, guid: 755a9a2f9d8bce74ca6323d5fbe96cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   powertext: {fileID: 5965101082333233236, guid: 6c8259681d9600c439e10ddeff5e0100, type: 3}
-  animationName: Bike
+  animationName: Rotate
   powerlevel: 0
-  maxPower: 3
-  maxDelay: 50
+  maxPower: 5
+  maxSpin: 20
