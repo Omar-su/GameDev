@@ -178,9 +178,9 @@ public class CharacterMovement : MonoBehaviour
             RemoveExcess();
         }
     }
-
+    public bool gameIsOver = false;
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "FallTrigger"){
+        if(other.tag == "FallTrigger" && !gameIsOver){
             gameOverScreen.SetUp();
         }
         else if(other.tag == "Exam"){

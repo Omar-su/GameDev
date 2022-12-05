@@ -8,6 +8,7 @@ public class GAMEOVER : MonoBehaviour
     public TextMeshProUGUI endScoreText;  
     public Score score;
     public CharacterMovement cm;
+    public Rigidbody2D rb;
     public GodAccess ga;
 
 
@@ -16,6 +17,7 @@ public class GAMEOVER : MonoBehaviour
         setEndScore(score.getScore());
         camera.TurnOff();
         cm.movementSpeed = 0;
+        cm.gameIsOver = true;
         cm.enabled = false;
         ga.enabled = false;
     }

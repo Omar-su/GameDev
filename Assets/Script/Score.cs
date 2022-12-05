@@ -30,13 +30,13 @@ public class Score : MonoBehaviour
         const float exploPerHP = 0.1f;
         
         bool speedUP = false;
-        if (reached60 == false && score >= 15) {
+        if (reached60 == false && score >= 60) {
             speedUP = true;
             reached60 = true;
 //            fyOb.SetActive(true);
             anm.SetTrigger("FY");
         }
-        else if (reached120 == false && score >= 20) {
+        else if (reached120 == false && score >= 120) {
             speedUP = true;
             reached120 = true;
            // syOb.SetActive(true);

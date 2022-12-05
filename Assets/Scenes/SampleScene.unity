@@ -203,6 +203,8 @@ MonoBehaviour:
   camera: {fileID: 519420034}
   endScoreText: {fileID: 1814667343}
   score: {fileID: 532308701}
+  cm: {fileID: 532308703}
+  ga: {fileID: 164526755}
 --- !u!114 &45473613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,7 +368,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &78044798
 RectTransform:
   m_ObjectHideFlags: 0
@@ -434,8 +436,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6.2
-  m_fontSizeBase: 6.2
+  m_fontSize: 0
+  m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -739,6 +741,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &164526755 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4361899439181728575, guid: 049c558b05e3f05bf85b1a4ef96316c0, type: 3}
+  m_PrefabInstance: {fileID: 2029561141}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774fa1ef8f8f6c3e78bde4786f4bca57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &199089623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,7 +1261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &334181428
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1316,8 +1329,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6.2
-  m_fontSizeBase: 6.2
+  m_fontSize: 0
+  m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1755,8 +1768,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87de915ec99537443b047ffab6299e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
   scoreText: {fileID: 258899114}
+  anm: {fileID: 532308702}
+  fyOb: {fileID: 78044797}
+  syOb: {fileID: 334181427}
+  lyOb: {fileID: 729384083}
+--- !u!95 &532308702 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1201098333170047203, guid: 606192eb7d70fd94f802c3768bb0d244, type: 3}
+  m_PrefabInstance: {fileID: 472168866}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &532308703 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201098333170047230, guid: 606192eb7d70fd94f802c3768bb0d244, type: 3}
+  m_PrefabInstance: {fileID: 472168866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532308694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190505a6d87ada446998e366c2cfd606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &590069213
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,7 +2054,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &729384084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2091,8 +2123,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6.2
-  m_fontSizeBase: 6.2
+  m_fontSize: 0
+  m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5078,6 +5110,8 @@ MonoBehaviour:
   camera: {fileID: 519420034}
   endScoreText: {fileID: 199089625}
   score: {fileID: 532308701}
+  cm: {fileID: 532308703}
+  ga: {fileID: 164526755}
 --- !u!114 &2127972921
 MonoBehaviour:
   m_ObjectHideFlags: 0
