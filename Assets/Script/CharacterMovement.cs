@@ -186,7 +186,7 @@ public class CharacterMovement : MonoBehaviour
         else if(other.tag == "Exam"){
             canMove = false;
             ObjectEntered = other;
-            HavocTime = 5;
+            HavocTime = 3.5f;
             animator.SetBool("Working", true);
             incScore =20;
             StartCoroutine("StopHavocInTime");
@@ -194,7 +194,7 @@ public class CharacterMovement : MonoBehaviour
         else if(other.tag == "Lab") {
             canMove = false;
             ObjectEntered = other;
-            HavocTime = 3;
+            HavocTime = 2.5f;
             incScore = 15;
             StartCoroutine("StopHavocInTime");
         } 
