@@ -8,6 +8,10 @@ public class Score : MonoBehaviour
     public TextMeshProUGUI scoreText;  
     private double score; 
 
+    public Animator anm;
+    public GameObject fyOb;
+    public GameObject syOb;
+    public GameObject lyOb;
 
     private void Start() {
         score = 0;
@@ -26,16 +30,22 @@ public class Score : MonoBehaviour
         const float exploPerHP = 0.1f;
         
         bool speedUP = false;
-        if (reached60 == false && score >= 60) {
+        if (reached60 == false && score >= 15) {
             speedUP = true;
             reached60 = true;
+//            fyOb.SetActive(true);
+            anm.SetTrigger("FY");
         }
-        else if (reached120 == false && score >= 120) {
+        else if (reached120 == false && score >= 20) {
             speedUP = true;
             reached120 = true;
+           // syOb.SetActive(true);
+            anm.SetTrigger("SY");
         }
         else if (score >= 180) {
             //TODO END GAME
+            //lyOb.SetActive(true);
+            anm.SetTrigger("LY");
         }
         if (speedUP) {
             Camera.main.gameObject.GetComponent<CameraFollow>().speed *= speedGain;

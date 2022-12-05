@@ -15,6 +15,7 @@ public class GAMEOVER : MonoBehaviour
         gameObject.SetActive(true);
         setEndScore(score.getScore());
         camera.TurnOff();
+        cm.movementSpeed = 0;
         cm.enabled = false;
         ga.enabled = false;
     }
